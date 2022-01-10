@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FA495F2-786
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCart.Core", "src\SimpleCart.Core\SimpleCart.Core.csproj", "{022C667E-19E6-401B-A694-3CA9A0403F61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCart.Infrastructure", "src\SimpleCart.Infrastructure\SimpleCart.Infrastructure.csproj", "{F42C7628-E5DF-4107-923A-F1376FCC4FF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,13 @@ Global
 		{022C667E-19E6-401B-A694-3CA9A0403F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{022C667E-19E6-401B-A694-3CA9A0403F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{022C667E-19E6-401B-A694-3CA9A0403F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{022C667E-19E6-401B-A694-3CA9A0403F61} = {6FA495F2-786B-4A79-9A66-F557F00FBC80}
+		{F42C7628-E5DF-4107-923A-F1376FCC4FF0} = {6FA495F2-786B-4A79-9A66-F557F00FBC80}
 	EndGlobalSection
 EndGlobal
