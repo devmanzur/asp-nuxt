@@ -6,7 +6,7 @@ using SimpleCart.Core.Models.Users;
 
 namespace SimpleCart.Infrastructure.Persistence;
 
-public class DatabaseContext : DbContext, IUnitOfWork
+public class ApplicationDatabaseContext : DbContext, IUnitOfWork
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -16,6 +16,6 @@ public class DatabaseContext : DbContext, IUnitOfWork
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDatabaseContext).Assembly);
     }
 }

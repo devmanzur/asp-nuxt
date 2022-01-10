@@ -7,11 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Ioc" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SimpleCart.Core\SimpleCart.Core.csproj" />
+        <ProjectReference Include="..\SimpleCart.Core\SimpleCart.Core.csproj" />
     </ItemGroup>
 
 </Project>
