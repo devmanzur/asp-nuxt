@@ -6,4 +6,5 @@ namespace SimpleCart.Core.Interfaces;
 public interface IUnitOfWork
 {
     public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }
