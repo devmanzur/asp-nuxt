@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCart.Core", "src\Simp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCart.Infrastructure", "src\SimpleCart.Infrastructure\SimpleCart.Infrastructure.csproj", "{F42C7628-E5DF-4107-923A-F1376FCC4FF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCart.Web", "src\SimpleCart.Web\SimpleCart.Web.csproj", "{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +22,14 @@ Global
 		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F42C7628-E5DF-4107-923A-F1376FCC4FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{022C667E-19E6-401B-A694-3CA9A0403F61} = {6FA495F2-786B-4A79-9A66-F557F00FBC80}
 		{F42C7628-E5DF-4107-923A-F1376FCC4FF0} = {6FA495F2-786B-4A79-9A66-F557F00FBC80}
+		{A78814A7-76FA-4C1E-98BA-EFA7824CE6C4} = {6FA495F2-786B-4A79-9A66-F557F00FBC80}
 	EndGlobalSection
 EndGlobal

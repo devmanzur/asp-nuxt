@@ -7,10 +7,10 @@ public class Segment
     private const int DefaultPageSize = 50;
     private const int MaxPageSize = 100;
 
-    public Segment(int size, int index)
+    public Segment(int? size = DefaultPageSize, int? index = 1)
     {
-        Size = size;
-        Index = GetValidOrDefaultIndex(index);
+        Size = size ?? 0;
+        Index = index ?? 0;
     }
 
     private static int GetValidOrDefaultIndex(int index)
