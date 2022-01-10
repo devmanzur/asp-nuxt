@@ -1,4 +1,4 @@
-namespace SimpleCart.Core.Models.UserAggregate;
+namespace SimpleCart.Core.Models.Users;
 
 public enum AuthenticationProvider
 {

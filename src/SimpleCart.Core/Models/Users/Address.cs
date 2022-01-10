@@ -1,6 +1,6 @@
 using SimpleCart.Core.Interfaces;
 
-namespace SimpleCart.Core.Models.UserAggregate;
+namespace SimpleCart.Core.Models.Users;
 
 public class Address : BaseValueObject
 {

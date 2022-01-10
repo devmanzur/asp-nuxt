@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SimpleCart.Core.Interfaces;
-using SimpleCart.Core.Models.CartAggregate;
-using SimpleCart.Core.Models.ProductAggregate;
-using SimpleCart.Core.Models.UserAggregate;
+using SimpleCart.Core.Models.Carts;
+using SimpleCart.Core.Models.Products;
+using SimpleCart.Core.Models.Users;
 
 namespace SimpleCart.Infrastructure.Persistence;
 

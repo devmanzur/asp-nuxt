@@ -1,6 +1,6 @@
 using SimpleCart.Core.Interfaces;
 
-namespace SimpleCart.Core.Models.ProductAggregate;
+namespace SimpleCart.Core.Models.Products;
 
 public class Category : BaseEntity
 {

@@ -1,6 +1,6 @@
 using SimpleCart.Core.Interfaces;
 
-namespace SimpleCart.Core.Models.UserAggregate;
+namespace SimpleCart.Core.Models.Users;
 
 public class ApplicationUser : BaseEntity
 {
@@ -8,13 +8,7 @@ public class ApplicationUser : BaseEntity
     public string LastName { get; private set; }
     public string Username { get; private set; }
     public AuthenticationProvider AuthenticationProvider { get; private set; }
-    private readonly List<Address> _addresses = new List<Address>();
-    public virtual IReadOnlyList<Address> Addresses => _addresses.AsReadOnly();
-
-    public DateTime CreatedTime { get; set; }
-    public string CreatedBy { get; set; }
-    public DateTime LastModifiedTime { get; set; }
-    public string LastModifiedBy { get; set; }
+    public Address Address { get; private set; }
 
     public ApplicationUser(string firstName, string lastName, string username,
         AuthenticationProvider authenticationProvider)
@@ -27,6 +21,6 @@ public class ApplicationUser : BaseEntity
 
     public void SaveAddress(Address address)
     {
-        this._addresses.Add(address);
+        this.Address = address;
     }
 }

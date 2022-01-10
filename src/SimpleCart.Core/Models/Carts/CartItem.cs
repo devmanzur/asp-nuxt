@@ -1,7 +1,7 @@
 using SimpleCart.Core.Interfaces;
-using SimpleCart.Core.Models.ProductAggregate;
+using SimpleCart.Core.Models.Products;
 
-namespace SimpleCart.Core.Models.CartAggregate;
+namespace SimpleCart.Core.Models.Carts;
 
 public class CartItem : BaseEntity
 {

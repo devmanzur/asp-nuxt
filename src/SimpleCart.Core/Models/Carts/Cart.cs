@@ -1,8 +1,8 @@
 using SimpleCart.Core.Interfaces;
-using SimpleCart.Core.Models.ProductAggregate;
-using SimpleCart.Core.Models.UserAggregate;
+using SimpleCart.Core.Models.Products;
+using SimpleCart.Core.Models.Users;
 
-namespace SimpleCart.Core.Models.CartAggregate;
+namespace SimpleCart.Core.Models.Carts;
 
 public class Cart : BaseEntity
 {
