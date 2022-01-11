@@ -11,6 +11,11 @@ public class Cart : BaseEntity
     private readonly List<CartItem> _items = new List<CartItem>();
     public IReadOnlyCollection<CartItem> Items => _items.AsReadOnly();
 
+    private Cart()
+    {
+        
+    }
+
     public Cart(ApplicationUser owner)
     {
         OwnerId = owner.Id;

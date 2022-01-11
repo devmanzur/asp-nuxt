@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  cartdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+
+  portainer:
+    image: portainer/portainer-ce
+
+  cart-api:
+    image: ${DOCKER_REGISTRY-}cart.api
+    build:
+      context: .
+      dockerfile: SimpleCart.Web/Dockerfile
+
+volumes:
+  portainer_data:
+  sqlserver_data:

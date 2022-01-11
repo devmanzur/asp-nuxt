@@ -10,6 +10,10 @@ public class ApplicationUser : BaseEntity
     public AuthenticationProvider AuthenticationProvider { get; private set; }
     public Address Address { get; private set; }
 
+    private ApplicationUser()
+    {
+        
+    }
     public ApplicationUser(string firstName, string lastName, string username,
         AuthenticationProvider authenticationProvider)
     {

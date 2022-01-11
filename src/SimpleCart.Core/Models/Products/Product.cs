@@ -10,8 +10,11 @@ public class Product : BaseEntity
     public string ImageUri { get; private set; }
     public int CategoryId { get; private set; }
     public Category Category { get; private set; }
-    
-    
+
+    private Product()
+    {
+        
+    }
     public Product(Category category,string name, string description, decimal price, string imageUri)
     {
         Name = name;

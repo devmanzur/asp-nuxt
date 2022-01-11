@@ -13,6 +13,11 @@ public class ApplicationDatabaseContext : DbContext, IUnitOfWork
     public DbSet<Cart> Carts { get; set; }
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+    public ApplicationDatabaseContext(DbContextOptions options) : base(options)
+    {
+        
+    }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

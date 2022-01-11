@@ -10,7 +10,11 @@ public class Category : BaseEntity
     private readonly List<Product> _products = new List<Product>();
 
     public virtual IReadOnlyList<Product> Products => _products.AsReadOnly();
-   
+
+    private Category()
+    {
+        
+    }
     public Category(string name, string description)
     {
         Name = name;

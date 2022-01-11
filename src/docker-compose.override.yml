@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  cartdb:
+    container_name: cartdb
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    restart: always
+    ports:
+      - "5433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8081:8000"
+      - "9090:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  cart-api:
+    container_name: cart-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:SimpleCartDb=Server=cartdb;Initial Catalog=CartDb;Persist Security Info=False;User Id=sa;Password=Pass@word;"
+    depends_on:
+      - cartdb
+    ports:
+      - "8000:80"

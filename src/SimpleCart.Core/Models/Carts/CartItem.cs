@@ -5,6 +5,11 @@ namespace SimpleCart.Core.Models.Carts;
 
 public class CartItem : BaseEntity
 {
+
+    private CartItem()
+    {
+        
+    }
     public CartItem(Product product, int quantity = 1)
     {
         ProductId = product.Id;
