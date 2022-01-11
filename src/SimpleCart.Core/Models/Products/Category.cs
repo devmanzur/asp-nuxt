@@ -20,4 +20,9 @@ public class Category : BaseEntity
         Name = name;
         Description = description;
     }
+
+    public void AddProducts(List<Product> products)
+    {
+        _products.AddRange(products);
+    }
 }

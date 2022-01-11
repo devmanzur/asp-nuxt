@@ -15,12 +15,11 @@ public class Product : BaseEntity
     {
         
     }
-    public Product(Category category,string name, string description, decimal price, string imageUri)
+    public Product(string name, string description, decimal price, string imageUri)
     {
         Name = name;
         Description = description;
         Price = price;
         ImageUri = imageUri;
-        CategoryId = category.Id;
     }
 }

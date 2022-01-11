@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleCart.Core.Interfaces;
 using SimpleCart.Infrastructure.Persistence;
+using SimpleCart.Infrastructure.Utils;
 
 namespace SimpleCart.Infrastructure.Ioc;
 
@@ -13,6 +14,6 @@ public static class DependencySetup
         services.AddDbContext<ApplicationDatabaseContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("SimpleCartDb")));
         services.AddScoped<IUnitOfWork>(provider => provider.GetService<ApplicationDatabaseContext>()!);
-
+        services.AddHostedService<DatabaseSeedingService>();
     }
 }
