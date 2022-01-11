@@ -8,8 +8,8 @@ public class CartConfig : IEntityTypeConfiguration<Cart>
 {
     public void Configure(EntityTypeBuilder<Cart> builder)
     {
-        builder.HasOne(x => x.Owner);
-        builder.Property(x => x.OwnerId).IsRequired();
+        builder.Property(x => x.ReferenceId).IsRequired();
+        builder.HasIndex(x => x.ReferenceId).IsUnique();
         builder.HasMany(x => x.Items)
             .WithOne(i => i.Cart)
             .HasForeignKey(i => i.CartId);

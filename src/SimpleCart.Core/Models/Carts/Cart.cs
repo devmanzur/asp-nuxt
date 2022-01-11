@@ -6,30 +6,37 @@ namespace SimpleCart.Core.Models.Carts;
 
 public class Cart : BaseEntity
 {
-    public int OwnerId { get; private set; }
-    public ApplicationUser Owner { get; private set; }
+    public string ReferenceId { get; private set; }
     private readonly List<CartItem> _items = new List<CartItem>();
     public IReadOnlyCollection<CartItem> Items => _items.AsReadOnly();
 
     private Cart()
     {
-        
     }
 
-    public Cart(ApplicationUser owner)
+    public Cart(string referenceId)
     {
-        OwnerId = owner.Id;
+        ReferenceId = referenceId;
     }
-    
-    public void AddItem(Product product, decimal unitPrice, int quantity = 1)
+
+
+    public void AddItem(Product product, int quantity = 1)
     {
-        var existingItem = Items.FirstOrDefault(x => x.ProductId == product.Id);
+        var existingItem = _items.FirstOrDefault(x => x.ProductId == product.Id);
         if (existingItem != null)
         {
-            existingItem.IncreaseQuantity(quantity);
+            existingItem.SetQuantity(quantity);
+            if (existingItem.Quantity == 0)
+            {
+                _items.Remove(existingItem);
+            }
             return;
         }
 
-        _items.Add(new CartItem(product, quantity));
+        var item = new CartItem(product, quantity);
+        if (item.Quantity > 0)
+        {
+            _items.Add(item);
+        }
     }
 }

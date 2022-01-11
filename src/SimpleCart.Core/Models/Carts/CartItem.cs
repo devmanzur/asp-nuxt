@@ -5,11 +5,10 @@ namespace SimpleCart.Core.Models.Carts;
 
 public class CartItem : BaseEntity
 {
-
     private CartItem()
     {
-        
     }
+
     public CartItem(Product product, int quantity = 1)
     {
         ProductId = product.Id;
@@ -26,12 +25,6 @@ public class CartItem : BaseEntity
 
     public void SetQuantity(int quantity)
     {
-        this.Quantity = quantity;
-    }
-
-    public void IncreaseQuantity(int quantity)
-    {
-        var total = this.Quantity + quantity;
-        SetQuantity(total);
+        this.Quantity = quantity < 0 ? 0 : quantity;
     }
 }
