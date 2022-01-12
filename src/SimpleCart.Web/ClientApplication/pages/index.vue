@@ -38,11 +38,14 @@ export default {
   created() {
     this.$store.dispatch('catalog/loadProducts');
     this.$store.dispatch('catalog/loadCategories');
+    this.$store.dispatch('cart/initializeCart');
   },
   methods: {
     addItemToCart(product) {
-      this.selectedProduct = product;
-      this.isDialogOpen = true;
+      this.$store.dispatch('cart/addToCart', {
+        productId: product.id,
+        quantity: 1,
+      });
     },
     onCategorySelected(category) {},
   },
