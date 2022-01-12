@@ -1,7 +1,7 @@
 using MediatR;
 using SimpleCart.Core.Dtos;
 
-namespace SimpleCart.Core.UseCases.ViewCatalog;
+namespace SimpleCart.Core.UseCases.Products.ViewCatalog;
 
 public class ViewCatalogQuery : IRequest<List<CatalogItemDto>>
 {

@@ -26,4 +26,9 @@
             };
         }
     }
+
+    public class Envelope : Envelope<string>
+    {
+        
+    }
 }

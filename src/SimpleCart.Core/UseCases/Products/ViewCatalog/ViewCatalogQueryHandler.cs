@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SimpleCart.Core.Dtos;
 using SimpleCart.Core.Interfaces;
 
-namespace SimpleCart.Core.UseCases.ViewCatalog;
+namespace SimpleCart.Core.UseCases.Products.ViewCatalog;
 
 public class ViewCatalogQueryHandler : IRequestHandler<ViewCatalogQuery, List<CatalogItemDto>>
 {

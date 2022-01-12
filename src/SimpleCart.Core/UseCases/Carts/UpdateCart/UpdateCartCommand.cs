@@ -4,15 +4,15 @@ using MediatR;
 using SimpleCart.Core.Dtos;
 using SimpleCart.Core.Utils;
 
-namespace SimpleCart.Core.UseCases.AddToCart;
+namespace SimpleCart.Core.UseCases.Carts.UpdateCart;
 
-public class AddToCartCommand : IRequest<Result<CartDto>>
+public class UpdateCartCommand : IRequest<Result<CartDto>>
 {
     public string ReferenceId { get; }
     public int ProductId { get; }
     public int Quantity { get; }
 
-    public AddToCartCommand(string referenceId,int productId, int quantity)
+    public UpdateCartCommand(string referenceId,int productId, int quantity)
     {
         ReferenceId = referenceId;
         ProductId = productId;
@@ -20,9 +20,9 @@ public class AddToCartCommand : IRequest<Result<CartDto>>
     }
 }
 
-public class AddToCartCommandValidator : AbstractValidator<AddToCartCommand>
+public class UpdateCartCommandCommandValidator : AbstractValidator<UpdateCartCommand>
 {
-    public AddToCartCommandValidator()
+    public UpdateCartCommandCommandValidator()
     {
         RuleFor(x => x.Quantity).Must(ValidationUtils.IsValidQuantity);
         RuleFor(x => x.ProductId).Must(ValidationUtils.IsValidEntityId);

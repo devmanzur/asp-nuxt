@@ -7,20 +7,20 @@ using SimpleCart.Core.Interfaces;
 using SimpleCart.Core.Models.Carts;
 using SimpleCart.Core.Models.Products;
 
-namespace SimpleCart.Core.UseCases.AddToCart;
+namespace SimpleCart.Core.UseCases.Carts.UpdateCart;
 
-public class AddToCartCommandHandler : IRequestHandler<AddToCartCommand, Result<CartDto>>
+public class UpdateCartCommandCommandHandler : IRequestHandler<UpdateCartCommand, Result<CartDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IValidator<AddToCartCommand> _validator;
+    private readonly IValidator<UpdateCartCommand> _validator;
 
-    public AddToCartCommandHandler(IUnitOfWork unitOfWork,IValidator<AddToCartCommand> validator)
+    public UpdateCartCommandCommandHandler(IUnitOfWork unitOfWork,IValidator<UpdateCartCommand> validator)
     {
         _unitOfWork = unitOfWork;
         _validator = validator;
     }
 
-    public async Task<Result<CartDto>> Handle(AddToCartCommand request, CancellationToken cancellationToken)
+    public async Task<Result<CartDto>> Handle(UpdateCartCommand request, CancellationToken cancellationToken)
     {
         var requestValidation = await _validator.ValidateAsync(request, cancellationToken);
         if (!requestValidation.IsValid)
@@ -35,14 +35,22 @@ public class AddToCartCommandHandler : IRequestHandler<AddToCartCommand, Result<
             return Result.Failure<CartDto>("Product not found!");
         }
 
-        var cart = await FindCart(request, cancellationToken) ?? CreateCart(request);
-        cart.AddItem(product.Value!, request.Quantity);
+        Maybe<Cart?> cart = await _unitOfWork.Carts
+            .Include(x => x.Items)
+            .FirstOrDefaultAsync(x => x.ReferenceId == request.ReferenceId,
+                cancellationToken: cancellationToken);
+        if (cart.HasNoValue)
+        {
+            return Result.Failure<CartDto>("Cart not found!");
+        }
+        
+        cart.Value!.AddItem(product.Value!, request.Quantity);
         await _unitOfWork.Commit();
 
         var response = new CartDto()
         {
-            ReferenceId = cart.ReferenceId,
-            Items = cart.Items.Select(i => new CartItemDto()
+            ReferenceId = cart.Value!.ReferenceId,
+            Items = cart.Value!.Items.Select(i => new CartItemDto()
             {
                 Quantity = i.Quantity,
                 ProductId = i.ProductId,
@@ -53,9 +61,9 @@ public class AddToCartCommandHandler : IRequestHandler<AddToCartCommand, Result<
         return Result.Success(response);
     }
 
-    private Cart CreateCart(AddToCartCommand request) => new Cart(request.ReferenceId);
+    private Cart CreateCart(UpdateCartCommand request) => new Cart(request.ReferenceId);
 
-    private Task<Cart?> FindCart(AddToCartCommand request, CancellationToken cancellationToken)
+    private Task<Cart?> FindCart(UpdateCartCommand request, CancellationToken cancellationToken)
     {
         return _unitOfWork.Carts
             .Include(x => x.Items)
