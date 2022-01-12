@@ -24,7 +24,7 @@ public class Segment
     {
         get => this._size;
 
-        init => _size = value < 0 ? DefaultPageSize : value > MaxPageSize ? MaxPageSize : value;
+        init => _size = value <= 0 ? DefaultPageSize : value > MaxPageSize ? MaxPageSize : value;
     }
 
     public int Skip => (Index - 1) * Size;
