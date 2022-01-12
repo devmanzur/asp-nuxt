@@ -43,7 +43,7 @@ export default {
   methods: {
     addItemToCart(product) {
       this.$store.dispatch('cart/addToCart', {
-        productId: product.id,
+        productId: product.productId,
         quantity: 1,
       });
     },

@@ -36,4 +36,26 @@ export const actions = {
       }
     }
   },
+  async addToCart({ state, commit }, payload) {
+    let total = payload.quantity;
+    const items = state.cart.items;
+    if (items.length > 0) {
+      const existingItem = items.find(
+        (item) => item.productId === payload.productId
+      );
+      if (existingItem != null) {
+        total += existingItem.quantity;
+      }
+    }
+
+    const addItemToCart = await this.$axios.$put('cart', {
+      referenceId: state.cart.referenceId,
+      productId: payload.productId,
+      quantity: total,
+    });
+
+    if (addItemToCart.success) {
+      commit('setCart', addItemToCart.data);
+    }
+  },
 };
