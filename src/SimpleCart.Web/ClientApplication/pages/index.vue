@@ -36,28 +36,10 @@ export default {
     },
   },
   created() {
-    this.loadCategories();
-    this.loadProducts();
+    this.$store.dispatch('catalog/loadProducts');
+    this.$store.dispatch('catalog/loadCategories');
   },
   methods: {
-    async loadProducts() {
-      const existingItems = this.$store.state.catalog.products;
-      if (existingItems.length > 0) return;
-
-      const response = await this.$axios.$get('catalog');
-      if (response.success) {
-        this.$store.commit('catalog/setProducts', response.data);
-      }
-    },
-    async loadCategories() {
-      const existingItems = this.$store.state.catalog.categories;
-      if (existingItems.length > 0) return;
-
-      const response = await this.$axios.$get('catalog/categories');
-      if (response.success) {
-        this.$store.commit('catalog/setCategories', response.data);
-      }
-    },
     addItemToCart(product) {
       this.selectedProduct = product;
       this.isDialogOpen = true;

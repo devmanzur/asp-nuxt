@@ -13,14 +13,22 @@ export const mutations = {
 };
 
 export const actions = {
-  async nuxtServerInit({ commit }, { $axios }) {
-    // const getProducts = await this.$axios.$get('catalog');
-    // if (getProducts.success) {
-    //   commit('setProducts', getProducts.data);
-    // }
-    // const getCategories = await this.$axios.$get('catalog/categories');
-    // if (getCategories.success) {
-    //   this.$store.commit('setCategories', getCategories.data);
-    // }
+  async loadProducts({ state, commit }) {
+    const existingItems = state.products;
+    if (existingItems.length > 0) return;
+
+    const response = await this.$axios.$get('catalog');
+    if (response.success) {
+      commit('setProducts', response.data);
+    }
+  },
+  async loadCategories({ state, commit }) {
+    const existingItems = state.categories;
+    if (existingItems.length > 0) return;
+
+    const response = await this.$axios.$get('catalog/categories');
+    if (response.success) {
+      commit('setCategories', response.data);
+    }
   },
 };
