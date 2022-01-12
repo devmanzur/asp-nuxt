@@ -36,7 +36,7 @@ public class UpdateCartCommandCommandHandler : IRequestHandler<UpdateCartCommand
         }
 
         Maybe<Cart?> cart = await _unitOfWork.Carts
-            .Include(x => x.Items)
+            .Include(x => x.Items).ThenInclude(i=>i.Product)
             .FirstOrDefaultAsync(x => x.ReferenceId == request.ReferenceId,
                 cancellationToken: cancellationToken);
         if (cart.HasNoValue)
@@ -54,6 +54,8 @@ public class UpdateCartCommandCommandHandler : IRequestHandler<UpdateCartCommand
             {
                 Quantity = i.Quantity,
                 ProductId = i.ProductId,
+                ProductName = i.Product?.Name,
+                ProductImageUrl = i.Product?.ImageUri,
                 UnitPrice = i.UnitPrice
             }).ToList()
         };

@@ -18,7 +18,9 @@ public class ViewCartQueryHandler : IRequestHandler<ViewCartQuery, CartDto>
 
     public async Task<CartDto> Handle(ViewCartQuery request, CancellationToken cancellationToken)
     {
-        Maybe<Cart?> cart = await _unitOfWork.Carts.FirstOrDefaultAsync(x => x.ReferenceId == request.ReferenceId,
+        Maybe<Cart?> cart = await _unitOfWork.Carts
+            .Include(x=>x.Items).ThenInclude(i=>i.Product)
+            .FirstOrDefaultAsync(x => x.ReferenceId == request.ReferenceId,
             cancellationToken: cancellationToken);
 
         if (cart.HasNoValue) return new CartDto();
@@ -30,6 +32,8 @@ public class ViewCartQueryHandler : IRequestHandler<ViewCartQuery, CartDto>
             {
                 Quantity = i.Quantity,
                 ProductId = i.ProductId,
+                ProductName = i.Product?.Name,
+                ProductImageUrl = i.Product?.ImageUri,
                 UnitPrice = i.UnitPrice
             }).ToList()
         };

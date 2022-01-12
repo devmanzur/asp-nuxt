@@ -1,9 +1,11 @@
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleCart.Core.Interfaces;
 using SimpleCart.Core.Models.Users;
+using SimpleCart.Core.UseCases.Carts.CreateCart;
 using SimpleCart.Infrastructure.Persistence;
 using SimpleCart.Infrastructure.Utils;
 
@@ -18,5 +20,6 @@ public static class DependencySetup
         services.AddScoped<IUnitOfWork>(provider => provider.GetService<ApplicationDatabaseContext>()!);
         services.AddHostedService<DatabaseSeedingService>();
         services.AddMediatR(typeof(ApplicationUser));
+        services.AddValidatorsFromAssemblyContaining<CreateCartCommandValidator>();
     }
 }
