@@ -28,7 +28,7 @@ public class CatalogController : BaseApiController
     [HttpGet("categories")]
     public async Task<ActionResult<Envelope<List<CategoryDto>>>> GetCategories()
     {
-        var query = new ViewCategoriesQuery();
+        var query = new ViewCategoriesQuery(new Segment());
         var categories = await _mediator.Send(query);
         return Ok(Envelope<List<CategoryDto>>.Ok(categories));
     }

@@ -36,21 +36,21 @@ export default {
           },
         ],
       },
-    }
+    };
   },
   methods: {
     toggleMenu(item) {
-      this.menu.items.forEach(this.disable)
-      this.enable(item)
+      this.menu.items.forEach(this.disable);
+      this.enable(item);
     },
     disable(item) {
-      item.style = 'text-gray-400'
+      item.style = 'text-gray-400';
     },
     enable(item) {
-      item.style = 'text-blue-700'
+      item.style = 'text-blue-700';
     },
   },
-}
+};
 </script>
 
 <style>

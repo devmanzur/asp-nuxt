@@ -17,10 +17,14 @@ public class ViewCategoriesQueryHandler : IRequestHandler<ViewCategoriesQuery, L
     public Task<List<CategoryDto>> Handle(ViewCategoriesQuery request, CancellationToken cancellationToken)
     {
         return _unitOfWork.Categories.Select(x => new CategoryDto()
-        {
-            CategoryId = x.Id,
-            Name = x.Name,
-            Description = x.Description
-        }).AsNoTracking().ToListAsync(cancellationToken: cancellationToken);
+            {
+                CategoryId = x.Id,
+                Name = x.Name,
+                Description = x.Description
+            })
+            .Take(request.Segment.Size)
+            .Skip(request.Segment.Skip)
+            .AsNoTracking()
+            .ToListAsync(cancellationToken: cancellationToken);
     }
 }

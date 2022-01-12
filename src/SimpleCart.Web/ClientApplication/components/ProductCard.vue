@@ -1,6 +1,10 @@
 <template>
   <div class="max-w-sm rounded overflow-hidden shadow-lg mb-3">
-    <img class="w-full object-cover h-48" :src="product.imageUri" alt="Product image" />
+    <img
+      class="w-full object-cover h-48"
+      :src="product.imageUri"
+      alt="Product image"
+    />
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">{{ product.name }}</div>
       <p class="text-gray-700 text-base">
@@ -23,6 +27,21 @@
         "
         >${{ product.price }}</span
       >
+      <button
+        class="
+          px-4
+          py-1
+          my-2
+          text-sm text-blue-600
+          font-semibold
+          rounded-full
+          border border-blue-200
+          hover:text-white hover:bg-blue-600 hover:border-transparent
+        "
+        @click="$emit('add-to-cart')"
+      >
+        Add to cart
+      </button>
     </div>
   </div>
 </template>
@@ -35,6 +54,7 @@ export default {
       required: true,
     },
   },
+  methods: {},
 };
 </script>
 
