@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>This is home page</h2>
+    <h2>This is cart page</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'CartPage',
 }
 </script>
