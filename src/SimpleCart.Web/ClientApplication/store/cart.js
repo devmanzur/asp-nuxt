@@ -2,6 +2,11 @@ export const state = () => ({
   cart: {
     referenceId: null,
     items: [],
+    vat: 0,
+    deliveryCharge: 0,
+    total: 0,
+    discount: 0,
+    payable: 0,
   },
 });
 
@@ -34,6 +39,28 @@ export const actions = {
           items: [],
         });
       }
+    }
+  },
+  async setQuantity({ state, commit }, payload) {
+    const items = state.cart.items;
+    if (items.length <= 0) {
+      return;
+    }
+    const existingItem = items.find(
+      (item) => item.productId === payload.productId
+    );
+    if (existingItem == null) {
+      return;
+    }
+
+    const updateQuantity = await this.$axios.$put('cart', {
+      referenceId: state.cart.referenceId,
+      productId: payload.productId,
+      quantity: payload.quantity,
+    });
+
+    if (updateQuantity.success) {
+      commit('setCart', updateQuantity.data);
     }
   },
   async addToCart({ state, commit }, payload) {
