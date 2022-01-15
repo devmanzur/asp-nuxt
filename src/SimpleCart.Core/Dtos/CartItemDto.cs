@@ -7,5 +7,5 @@ public class CartItemDto
     public int ProductId { get;  set; }
     public decimal TotalPrice => UnitPrice * Quantity;
     public string? ProductName { get; set; }
-    public string? ProductImageUrl { get; set; }
+    public string? ProductImageUri { get; set; }
 }

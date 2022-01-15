@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using SimpleCart.Core.Dtos;
 using SimpleCart.Core.Models.Orders;
 using SimpleCart.Core.UseCases.Orders.CreateOrder;
+using SimpleCart.Core.UseCases.Orders.ViewOrderDetails;
+using SimpleCart.Core.UseCases.Orders.ViewOrders;
 using SimpleCart.Web.Models;
 using SimpleCart.Web.Utils;
 
@@ -19,11 +21,37 @@ public class OrderController : BaseApiController
         _mediator = mediator;
     }
 
-    [HttpPost]
-    public async Task<ActionResult<OrderDto>> CreateOrder([FromBody] ReferenceIdViewModel request)
+    [HttpGet]
+    public async Task<ActionResult<Envelope<List<OrderDto>>>> GetOrders()
     {
-        var user = new Customer( User.GetIdentityClaimValue(AzureAdClaims.Username),User.GetIdentityClaimValue(AzureAdClaims.Name));
-        var command = new CreateOrderCommand(user, request.ReferenceId);
+        var customer = new Customer(User.GetIdentityClaimValue(AzureAdClaims.Username),
+            User.GetIdentityClaimValue(AzureAdClaims.Name));
+        var query = new ViewOrdersQuery(customer);
+        var getOrders = await _mediator.Send(query);
+        return Ok(Envelope<List<OrderDto>>.Ok(getOrders));
+    }
+
+    [HttpGet("{trackingId}")]
+    public async Task<ActionResult<Envelope<OrderDetailsDto>>> GetOrderDetails(string trackingId)
+    {
+        var customer = new Customer(User.GetIdentityClaimValue(AzureAdClaims.Username),
+            User.GetIdentityClaimValue(AzureAdClaims.Name));
+        var query = new ViewOrderDetailsQuery(customer, trackingId);
+        var getOrderDetails = await _mediator.Send(query);
+        if (getOrderDetails.IsSuccess)
+        {
+            return Ok(Envelope<OrderDetailsDto>.Ok(getOrderDetails.Value!));
+        }
+
+        return BadRequest(Envelope<OrderDetailsDto>.Error(getOrderDetails.Error));
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Envelope<OrderDto>>> CreateOrder([FromBody] ReferenceIdViewModel request)
+    {
+        var customer = new Customer(User.GetIdentityClaimValue(AzureAdClaims.Username),
+            User.GetIdentityClaimValue(AzureAdClaims.Name));
+        var command = new CreateOrderCommand(customer, request.ReferenceId);
         var createOrder = await _mediator.Send(command);
         if (createOrder.IsSuccess)
         {

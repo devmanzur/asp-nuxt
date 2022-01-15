@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center mt-6 pt-6">
       <div class="flex items-center">
         <img
-          :src="product.productImageUrl"
+          :src="product.productImageUri"
           class="w-20 object-cover h-20 rounded-full"
         />
         <div class="flex flex-col ml-3">

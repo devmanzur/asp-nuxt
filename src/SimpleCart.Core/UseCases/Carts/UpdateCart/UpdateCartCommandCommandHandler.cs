@@ -55,7 +55,7 @@ public class UpdateCartCommandCommandHandler : IRequestHandler<UpdateCartCommand
                 Quantity = i.Quantity,
                 ProductId = i.ProductId,
                 ProductName = i.Product?.Name,
-                ProductImageUrl = i.Product?.ImageUri,
+                ProductImageUri = i.Product?.ImageUri,
                 UnitPrice = i.UnitPrice
             }).ToList()
         };

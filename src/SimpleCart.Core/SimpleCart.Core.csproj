@@ -13,8 +13,4 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="UseCases\Orders\ViewOrderDetails" />
-    </ItemGroup>
-
 </Project>

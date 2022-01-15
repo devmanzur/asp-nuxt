@@ -33,7 +33,7 @@ public class ViewCartQueryHandler : IRequestHandler<ViewCartQuery, CartDto>
                 Quantity = i.Quantity,
                 ProductId = i.ProductId,
                 ProductName = i.Product?.Name,
-                ProductImageUrl = i.Product?.ImageUri,
+                ProductImageUri = i.Product?.ImageUri,
                 UnitPrice = i.UnitPrice
             }).ToList()
         };
