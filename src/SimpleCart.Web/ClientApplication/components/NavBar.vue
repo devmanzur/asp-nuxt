@@ -38,6 +38,9 @@ export default {
       },
     };
   },
+  mounted() {
+    
+  },
   methods: {
     toggleMenu(item) {
       this.menu.items.forEach(this.disable);

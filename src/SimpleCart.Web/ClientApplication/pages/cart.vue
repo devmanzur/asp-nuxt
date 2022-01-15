@@ -32,6 +32,7 @@
             ml-4
             mt-4
           "
+          @click="checkout"
         >
           Checkout
         </button>
@@ -54,6 +55,15 @@ export default {
   created() {
     this.$store.dispatch('cart/initializeCart');
   },
-  methods: {},
+  methods: {
+    checkout() {
+      if (!this.$auth.loggedIn) {
+        this.$auth.loginWith('aad');
+      } else {
+        const token = this.$auth.$storage.getUniversal('_token.aad');
+        console.log(token);
+      }
+    },
+  },
 };
 </script>
