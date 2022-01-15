@@ -102,7 +102,7 @@ export const actions = {
       return;
     }
 
-    const checkout = await this.$axios.$post('cart/checkout', {
+    const checkout = await this.$axios.$post('order', {
       referenceId: state.cart.referenceId,
     });
     if (checkout.success) {

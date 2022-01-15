@@ -11,6 +11,7 @@ public class CartItem : BaseEntity
 
     public CartItem(Product product, int quantity = 1)
     {
+        Product = product;
         ProductId = product.Id;
         UnitPrice = product.Price;
         SetQuantity(quantity);
