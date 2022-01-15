@@ -1,6 +1,7 @@
 export const state = () => ({
   products: [],
   categories: [],
+  selectedCategoryId: 0,
 });
 
 export const mutations = {
@@ -13,11 +14,16 @@ export const mutations = {
 };
 
 export const actions = {
-  async loadProducts({ state, commit }) {
+  async loadProducts({ state, commit }, payload) {
     const existingItems = state.products;
-    if (existingItems.length > 0) return;
+    const currentCategoryId = state.selectedCategoryId;
+    if (existingItems.length > 0 && currentCategoryId === payload?.categoryId)
+      return;
+    const queryParams = {
+      categoryId: payload?.categoryId,
+    };
 
-    const response = await this.$axios.$get('catalog');
+    const response = await this.$axios.$get('catalog', { params: queryParams });
     if (response.success) {
       commit('setProducts', response.data);
     }

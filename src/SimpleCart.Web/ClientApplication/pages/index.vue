@@ -5,7 +5,7 @@
         v-for="category in categories"
         :key="category.caregoryId"
         :title="category.name"
-        @on-clicked="onCategorySelected(category)"
+        @on-selected="onCategorySelected(category)"
       >
       </capsule-button>
     </div>
@@ -32,7 +32,9 @@ export default {
       return this.$store.state.catalog.products;
     },
     categories() {
-      return this.$store.state.catalog.categories;
+      const categories = [{ categoryId: null, name: 'All' }];
+      categories.push(...this.$store.state.catalog.categories);
+      return categories;
     },
   },
   created() {
@@ -47,7 +49,11 @@ export default {
         quantity: 1,
       });
     },
-    onCategorySelected(category) {},
+    onCategorySelected(category) {
+      this.$store.dispatch('catalog/loadProducts', {
+        categoryId: category.categoryId,
+      });
+    },
   },
 };
 </script>
