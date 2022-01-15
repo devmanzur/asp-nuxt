@@ -19,11 +19,7 @@ export default {
   name: 'AuthPage',
   mounted() {
     const ctx = this;
-    if (!this.$auth.loggedIn) {
-      this.$auth.loginWith('aad');
-    } else {
-      this.delay(2000).then(() => ctx.$router.push('/'));
-    }
+    this.delay(2000).then(() => ctx.$router.push('/'));
   },
   methods: {
     delay(time) {
