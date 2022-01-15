@@ -53,7 +53,7 @@ public class CartController : BaseApiController
         return BadRequest(Envelope<CartDto>.Error(updateCart.Error));
     }
 
-    [Authorize, HttpPost("checkout")]
+    [HttpPost("checkout")]
     public async Task<ActionResult<Envelope<CheckoutDto>>> Checkout([FromBody] ReferenceIdViewModel request)
     {
         var query = new ViewCartQuery(request.ReferenceId);

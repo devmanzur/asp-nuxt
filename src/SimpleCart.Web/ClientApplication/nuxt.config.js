@@ -64,8 +64,7 @@ export default {
         endpoints: {
           authorization:
             'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-          token:
-            'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+          token: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
           userInfo: '',
           logout: '/',
         },
@@ -83,7 +82,7 @@ export default {
         accessType: 'offline',
         clientId: process.env.IDENTITY_CLIENT_ID,
         codeChallengeMethod: 'S256',
-        scope: ['openid', 'profile'],
+        scope: ['openid', 'profile', process.env.API_ACESS_SCOPE],
         autoLogout: true,
       },
     },

@@ -59,9 +59,6 @@ export default {
     checkout() {
       if (!this.$auth.loggedIn) {
         this.$auth.loginWith('aad');
-      } else {
-        const token = this.$auth.$storage.getUniversal('_token.aad');
-        console.log(token);
       }
     },
   },
