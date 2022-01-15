@@ -14,6 +14,17 @@ export const mutations = {
   setCart(state, content) {
     state.cart = content;
   },
+  resetCart(state) {
+    state.cart = {
+      referenceId: null,
+      items: [],
+      vat: 0,
+      deliveryCharge: 0,
+      total: 0,
+      discount: 0,
+      payable: 0,
+    };
+  },
 };
 
 export const actions = {
@@ -83,6 +94,19 @@ export const actions = {
 
     if (addItemToCart.success) {
       commit('setCart', addItemToCart.data);
+    }
+  },
+  async checkout({ state, commit }) {
+    const items = state.cart.items;
+    if (items.length <= 0) {
+      return;
+    }
+
+    const checkout = await this.$axios.$post('cart/checkout', {
+      referenceId: state.cart.referenceId,
+    });
+    if (checkout.success) {
+      commit('resetCart');
     }
   },
 };

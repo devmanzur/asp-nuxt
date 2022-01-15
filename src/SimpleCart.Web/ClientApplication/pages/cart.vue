@@ -59,7 +59,9 @@ export default {
     checkout() {
       if (!this.$auth.loggedIn) {
         this.$auth.loginWith('aad');
+        return;
       }
+      this.$store.dispatch('cart/checkout');
     },
   },
 };

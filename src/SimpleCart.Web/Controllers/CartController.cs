@@ -53,7 +53,7 @@ public class CartController : BaseApiController
         return BadRequest(Envelope<CartDto>.Error(updateCart.Error));
     }
 
-    [HttpPost("checkout")]
+    [Authorize,HttpPost("checkout")]
     public async Task<ActionResult<Envelope<CheckoutDto>>> Checkout([FromBody] ReferenceIdViewModel request)
     {
         var query = new ViewCartQuery(request.ReferenceId);
@@ -65,7 +65,7 @@ public class CartController : BaseApiController
 
         var checkout = new CheckoutDto()
         {
-            Cart = cart,
+            Items = cart.Items,
             ArrivalDate = DateTime.UtcNow.AddDays(7).ToString("yyyy MMMM dd"),
             PaymentStatus = PaymentStatus.Due.ToString(),
             PaymentType = PaymentType.CashOnDelivery.ToString()
