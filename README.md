@@ -1,6 +1,6 @@
 # Simple Cart
 
-> A sample application that demonstrates how to wire up a nuxt js based front end SPA powered by an .NET 6 on the backend with Azure AD authentication.
+> A sample application that demonstrates how to wire up a nuxt js based front end SPA powered by .NET 6 on the backend with Azure AD authentication.
 
 The application it self is a simple shopping cart
 With functionalities like, 
