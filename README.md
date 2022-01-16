@@ -20,7 +20,7 @@ With functionalities like,
 - .NET 6, VueJs, NUXTJS, and Tailwind CSS
 
 ### Prerequisites
-- .NET 6 and MSSQL Server database access and npm
+- Docker or (.NET 6 and MSSQL Server database access and npm)
 - Azure Portal Access
 
 ## Getting Started
@@ -31,4 +31,8 @@ With functionalities like,
 - Go to ClientApplication folder inside SimpleCart.Web and run npm install
 - Replace the SimleCartDb connection string with your own connection string for MSSQL database
 - Run the application
+
+## Running Application on docker
+- Go to the src directory and run `docker-compose up`
+- The application should be available on http://localhost:8000
 
