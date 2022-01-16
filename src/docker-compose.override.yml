@@ -29,7 +29,7 @@ services:
       - "ConnectionStrings:SimpleCartDb=Server=cartdb;Initial Catalog=CartDb;Persist Security Info=False;User Id=sa;Password=Pass@word;"
       - "AzureAd:Instance=https://login.microsoftonline.com/"
       - "AzureAd:Domain="
-      - "AzureAd:ClientId=your-ad-client-id-here"
+      - "AzureAd:ClientId=AZURE_AD_CLIENT_ID"
       - "AzureAd:TenantId=common"
       - "AzureAd:CallbackPath=/signin-oidc"
     depends_on:

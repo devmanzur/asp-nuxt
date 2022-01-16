@@ -19,14 +19,18 @@ With functionalities like,
 - C#, JavaScript
 - .NET 6, VueJs, NUXTJS, and Tailwind CSS
 
-### Prerequisites
-- Docker or (.NET 6 and MSSQL Server database access and npm)
-- Azure Portal Access
-
-## Further
+## Resources
 - Setting up nuxt SPA with .NET (https://samwalpole.com/how-to-run-nuxt-from-a-aspnet-core-web-application)
 - Protecting front end with Azure AD (https://stuartpreston.net/2020/05/azure-ad-pkce-spa-nuxt/)
 - Protecting your resource API with Azure AD (https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
+
+### Prerequisites
+- Docker or (.NET 6 and MSSQL Server database access and npm)
+- Azure Portal Access
+- Replace `process.env.IDENTITY_CLIENT_ID` inside nuxt.config.js with your Azure AD client Id
+- Replace `process.env.API_ACESS_SCOPE` inside nuxt.config.js with the custom API Scope you created in Expose an API menu
+- Replace `AZURE_AD_CLIENT_ID` inside appsettings.Development.json with your Azure AD client Id
+- *If you are using docker, Replace `AZURE_AD_CLIENT_ID` inside docker-compose.override.yml with your Azure AD client Id
 
 ## Running Application in local environment using IDE
 - Go to ClientApplication folder inside SimpleCart.Web and run npm install
