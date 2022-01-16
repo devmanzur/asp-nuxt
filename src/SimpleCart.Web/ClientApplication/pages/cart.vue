@@ -68,9 +68,7 @@ export default {
         this.$auth.loginWith('aad');
         return;
       }
-      this.$store.dispatch('cart/checkout').then(() => {
-        this.$store.dispatch('orders/getOrders');
-      });
+      this.$store.dispatch('cart/checkout');
     },
   },
 };

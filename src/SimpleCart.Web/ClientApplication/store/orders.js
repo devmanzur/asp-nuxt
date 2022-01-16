@@ -15,9 +15,11 @@ export const mutations = {
 };
 
 export const actions = {
-  async getOrders({ state, commit }) {
-    const existingItems = state.orders;
-    if (existingItems.length > 0) return;
+  async getOrders({ state, commit }, payload) {
+    if (!payload.reload) {
+      const existingItems = state.orders;
+      if (existingItems.length > 0) return;
+    }
 
     const response = await this.$axios.$get('orders');
     if (response.success) {

@@ -3,8 +3,37 @@
     <div v-if="isLoggedIn">
       <div class="container mx-auto">
         <div v-if="orders.length > 0">
-            
-          <orders-table :orders="orders"> </orders-table>
+          <button
+            class="
+              px-4
+              py-1
+              my-2
+              text-sm text-blue-600
+              font-semibold
+              rounded-full
+              border border-blue-200
+              hover:text-white hover:bg-blue-600 hover:border-transparent
+              inline-flex
+            "
+            @click="onReloadClicked"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+            Reload
+          </button>
+          <orders-table :orders="orders" />
         </div>
         <div v-else>
           <empty-state
@@ -59,11 +88,14 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('orders/getOrders');
+    this.$store.dispatch('orders/getOrders', { reload: false });
   },
   methods: {
     signIn() {
       this.$auth.loginWith('aad');
+    },
+    onReloadClicked() {
+      this.$store.dispatch('orders/getOrders', { reload: true });
     },
   },
 };
