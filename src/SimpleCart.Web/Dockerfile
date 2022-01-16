@@ -1,4 +1,4 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base 
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -12,6 +12,11 @@ RUN dotnet restore "SimpleCart.Web/SimpleCart.Web.csproj"
 COPY . .
 WORKDIR "/src/SimpleCart.Web"
 RUN dotnet build "SimpleCart.Web.csproj" -c Release -o /app/build
+RUN apt-get update && \
+    apt-get install -y wget && \
+    apt-get install -y gnupg2 && \
+    wget -qO- https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y build-essential nodejs
 
 FROM build AS publish
 RUN dotnet publish "SimpleCart.Web.csproj" -c Release -o /app/publish

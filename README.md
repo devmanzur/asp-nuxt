@@ -15,3 +15,21 @@ With functionalities like,
 ![screenshot](./app_screenshot_3.png)
 ![screenshot](./app_screenshot_4.png)
 
+## Built With
+
+- C#, JavaScript
+- .NET 6, VueJs, NUXTJS, and TailwindCSS
+
+### Prerequisites
+- .NET 6 and MSSQL Server database access and npm
+- Azure Portal Access
+
+## Getting Started
+- Clone this repository
+- Follow this tutorial to setup your Azure AD configuration: (https://github.com/githubhandle)
+
+## Running Application in local environment using IDE
+- Go to ClientApplication folder inside SimpleCart.Web and run npm install
+- Replace the SimleCartDb connection string with your own connection string for MSSQL database
+- Run the application
+
