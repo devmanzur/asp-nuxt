@@ -9,7 +9,7 @@
       </cart-item>
     </div>
     <div v-else class="w-1/2">
-      <empty-state
+      <empty-state 
         image-url="/img/empty_cart.svg"
         title="Your cart is empty!"
         description="Click Add to cart from catalog"

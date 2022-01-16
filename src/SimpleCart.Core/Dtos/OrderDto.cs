@@ -3,12 +3,11 @@ namespace SimpleCart.Core.Dtos;
 public class OrderDto
 {
     public string TrackingId { get; set; }
-
+    public decimal PayableAmount { get; set; }
+    public string OrderStatus { get; set; }
     public string ArrivalDate { get; set; }
     public string PaymentType { get; set; }
     public string PaymentStatus { get; set; }
-    public string OrderStatus { get; set; }
-    public decimal PayableAmount { get; set; }
 }
 
 public class OrderDetailsDto : OrderDto

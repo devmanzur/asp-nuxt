@@ -1,7 +1,19 @@
 <template>
   <div>
     <div v-if="isLoggedIn">
-      <h2>Your orders are here!</h2>
+      <div class="container mx-auto">
+        <div v-if="orders.length > 0">
+            
+          <orders-table :orders="orders"> </orders-table>
+        </div>
+        <div v-else>
+          <empty-state
+            image-url="/img/no_orders.svg"
+            title="You have not created any orders yet!"
+            description="Checkout your cart to place an order"
+          />
+        </div>
+      </div>
     </div>
     <div v-else class="text-center">
       <empty-state
@@ -39,6 +51,15 @@ export default {
     isLoggedIn() {
       return this.$auth.loggedIn;
     },
+    orders() {
+      return this.$store.state.orders.orders;
+    },
+    selectedOrder() {
+      return this.$store.state.orders.selectedOrder;
+    },
+  },
+  created() {
+    this.$store.dispatch('orders/getOrders');
   },
   methods: {
     signIn() {
