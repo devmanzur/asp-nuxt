@@ -23,9 +23,10 @@ With functionalities like,
 - Docker or (.NET 6 and MSSQL Server database access and npm)
 - Azure Portal Access
 
-## Getting Started
-- Clone this repository
-- Follow this tutorial to setup your Azure AD configuration: (https://github.com/githubhandle)
+## Further
+- Setting up nuxt SPA with .NET (https://samwalpole.com/how-to-run-nuxt-from-a-aspnet-core-web-application)
+- Protecting front end with Azure AD (https://stuartpreston.net/2020/05/azure-ad-pkce-spa-nuxt/)
+- Protecting your resource API with Azure AD (https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
 
 ## Running Application in local environment using IDE
 - Go to ClientApplication folder inside SimpleCart.Web and run npm install
