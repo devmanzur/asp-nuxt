@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'simple-cart',
+    title: 'Simple Cart',
     htmlAttrs: {
       lang: 'en',
     },
