@@ -25,8 +25,13 @@ services:
   cart-api:
     container_name: cart-api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - "ConnectionStrings:SimpleCartDb=Server=cartdb;Initial Catalog=CartDb;Persist Security Info=False;User Id=sa;Password=Pass@word;"
+      - "AzureAd:Instance=https://login.microsoftonline.com/"
+      - "AzureAd:Domain="
+      - "AzureAd:ClientId=your-ad-client-id-here"
+      - "AzureAd:TenantId=common"
+      - "AzureAd:CallbackPath=/signin-oidc"
     depends_on:
       - cartdb
     ports:

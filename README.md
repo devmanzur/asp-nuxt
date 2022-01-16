@@ -16,9 +16,8 @@ With functionalities like,
 ![screenshot](./app_screenshot_4.png)
 
 ## Built With
-
 - C#, JavaScript
-- .NET 6, VueJs, NUXTJS, and TailwindCSS
+- .NET 6, VueJs, NUXTJS, and Tailwind CSS
 
 ### Prerequisites
 - .NET 6 and MSSQL Server database access and npm
