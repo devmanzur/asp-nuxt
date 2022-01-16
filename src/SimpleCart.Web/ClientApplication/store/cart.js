@@ -32,16 +32,13 @@ export const actions = {
     const myCart = state.cart;
     if (myCart.referenceId == null) {
       const refId = '1234567893456789ASAEWE';
-      const queryParams = {
-        referenceId: refId,
-      };
-      const getCart = await this.$axios.$get('cart', { params: queryParams });
+      const getCart = await this.$axios.$get(`carts/${refId}`);
       if (getCart.success && getCart.data.referenceId != null) {
         commit('setCart', getCart.data);
         return;
       }
 
-      const createCart = await this.$axios.$post('cart', {
+      const createCart = await this.$axios.$post('carts', {
         referenceId: refId,
       });
       if (createCart.success) {
@@ -64,7 +61,7 @@ export const actions = {
       return;
     }
 
-    const updateQuantity = await this.$axios.$put('cart', {
+    const updateQuantity = await this.$axios.$put('carts', {
       referenceId: state.cart.referenceId,
       productId: payload.productId,
       quantity: payload.quantity,
@@ -86,7 +83,7 @@ export const actions = {
       }
     }
 
-    const addItemToCart = await this.$axios.$put('cart', {
+    const addItemToCart = await this.$axios.$put('carts', {
       referenceId: state.cart.referenceId,
       productId: payload.productId,
       quantity: total,
@@ -102,7 +99,7 @@ export const actions = {
       return;
     }
 
-    const checkout = await this.$axios.$post('order', {
+    const checkout = await this.$axios.$post('orders', {
       referenceId: state.cart.referenceId,
     });
     if (checkout.success) {

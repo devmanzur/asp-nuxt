@@ -8,19 +8,19 @@ using SimpleCart.Web.Models;
 
 namespace SimpleCart.Web.Controllers;
 
-public class CartController : BaseApiController
+public class CartsController : BaseApiController
 {
     private readonly IMediator _mediator;
 
-    public CartController(IMediator mediator)
+    public CartsController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<Envelope<CartDto>>> GetCart([FromQuery] ReferenceIdViewModel request)
+    [HttpGet("{referenceId}")]
+    public async Task<ActionResult<Envelope<CartDto>>> GetCart(string referenceId)
     {
-        var query = new ViewCartQuery(request.ReferenceId);
+        var query = new ViewCartQuery(referenceId);
         var cart = await _mediator.Send(query);
         return Ok(Envelope<CartDto>.Ok(cart));
     }

@@ -12,11 +12,11 @@ using SimpleCart.Web.Utils;
 namespace SimpleCart.Web.Controllers;
 
 [Authorize]
-public class OrderController : BaseApiController
+public class OrdersController : BaseApiController
 {
     private readonly IMediator _mediator;
 
-    public OrderController(IMediator mediator)
+    public OrdersController(IMediator mediator)
     {
         _mediator = mediator;
     }

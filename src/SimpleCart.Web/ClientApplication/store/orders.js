@@ -19,7 +19,7 @@ export const actions = {
     const existingItems = state.orders;
     if (existingItems.length > 0) return;
 
-    const response = await this.$axios.$get('order');
+    const response = await this.$axios.$get('orders');
     if (response.success) {
       commit('setOrders', response.data);
     }
@@ -28,7 +28,7 @@ export const actions = {
     const existingItem = state.orderDetail;
     if (existingItem.trackingId === payload.trackingId) return;
 
-    const response = await this.$axios.$get(`order/${payload.trackingId}`);
+    const response = await this.$axios.$get(`orders/${payload.trackingId}`);
     if (response.success) {
       commit('setOrderDetails', response.data);
     }
