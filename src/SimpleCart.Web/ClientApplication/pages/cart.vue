@@ -1,12 +1,19 @@
 <template>
   <div class="container mx-auto flex">
-    <div class="w-1/2">
+    <div v-if="cart.items.length > 0" class="w-1/2">
       <cart-item
         v-for="item in cart.items"
         :key="item.productId"
         :product="item"
       >
       </cart-item>
+    </div>
+    <div v-else class="w-1/2">
+      <empty-state
+        image-url="/img/empty_cart.svg"
+        title="Your cart is empty!"
+        description="Click Add to cart from catalog"
+      />
     </div>
     <div class="w-1/2 px-20 mt-8">
       <div class="rounded overflow-hidden shadow-lg mb-3 p-4 pt-8">

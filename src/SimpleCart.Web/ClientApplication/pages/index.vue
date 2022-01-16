@@ -9,7 +9,11 @@
       >
       </capsule-button>
     </div>
-    <div id="catalog-items" class="grid grid-cols-5 gap-8">
+    <div
+      v-if="products.length > 0"
+      id="catalog-items"
+      class="grid grid-cols-5 gap-8"
+    >
       <product-card
         v-for="product in products"
         :key="product.productId"
@@ -17,6 +21,13 @@
         @add-to-cart="addItemToCart(product)"
       >
       </product-card>
+    </div>
+    <div v-else>
+      <empty-state
+        image-url="/img/taken.svg"
+        title="Call 911"
+        description="Someone stole our products, or that lazy developer forgot to add any items!"
+      />
     </div>
   </div>
 </template>
@@ -38,8 +49,8 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('catalog/loadProducts');
-    this.$store.dispatch('catalog/loadCategories');
+    this.$store.dispatch('catalog/getProducts');
+    this.$store.dispatch('catalog/getCategories');
     this.$store.dispatch('cart/initializeCart');
   },
   methods: {
@@ -50,7 +61,7 @@ export default {
       });
     },
     onCategorySelected(category) {
-      this.$store.dispatch('catalog/loadProducts', {
+      this.$store.dispatch('catalog/getProducts', {
         categoryId: category.categoryId,
       });
     },

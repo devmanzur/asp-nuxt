@@ -50,10 +50,13 @@ public class DatabaseSeedingService : IHostedService
         var kidsFashionCategory = new Category("Kids Fashion", "Kids Fashion categories");
         kidsFashionCategory.AddProducts(GetKidsFashionProducts());
 
+        var blackFriday = new Category("Black Friday Deals", "Black Friday Deals are awesome!");
+
         return new List<Category>()
         {
             fashionCategory,
-            kidsFashionCategory
+            kidsFashionCategory,
+            blackFriday
         };
     }
 

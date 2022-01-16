@@ -14,7 +14,7 @@ export const mutations = {
 };
 
 export const actions = {
-  async loadProducts({ state, commit }, payload) {
+  async getProducts({ state, commit }, payload) {
     const existingItems = state.products;
     const currentCategoryId = state.selectedCategoryId;
     if (existingItems.length > 0 && currentCategoryId === payload?.categoryId)
@@ -28,7 +28,7 @@ export const actions = {
       commit('setProducts', response.data);
     }
   },
-  async loadCategories({ state, commit }) {
+  async getCategories({ state, commit }) {
     const existingItems = state.categories;
     if (existingItems.length > 0) return;
 

@@ -28,10 +28,14 @@ export default {
             route: '/',
             style: 'text-blue-700',
           },
-
           {
-            title: 'Cart',
+            title: 'My Cart',
             route: '/cart',
+            style: 'text-gray-400',
+          },
+          {
+            title: 'My Orders',
+            route: '/orders',
             style: 'text-gray-400',
           },
         ],
