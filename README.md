@@ -8,7 +8,8 @@ With functionalities like,
 2. Add product to cart
 3. Manage cart
 4. Authentication using Microsoft
-5. View Orders
+5. Place an order
+6. View orders
 
 ![screenshot](./app_screenshot_1.png)
 ![screenshot](./app_screenshot_2.png)
