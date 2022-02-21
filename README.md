@@ -39,6 +39,6 @@ With functionalities like,
 - Run the application
 
 ## Running Application on docker
-- Go to the src directory and run `docker-compose up`
+- Go to the src directory and run `docker-compose build`, then `docker-compose up`
 - The application should be available on http://localhost:8000
 
